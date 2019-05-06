@@ -1,0 +1,43 @@
+html {
+  background-color: #0c120c;
+}
+
+sub {
+
+
+
+
+
+      font-family: 'Nanum Gothic Coding', monospace;
+
+
+  font-variant: normal;
+  color: #4c463d;
+  font-size: 16px;
+}
+
+#countdown {
+  height: 760px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+
+#countdown .timer {
+  font-size: 100px;
+  font-family: 'Nanum Gothic Coding', monospace;
+  color: #fffcf7;
+  text-align: center;
+  margin: 20px;
+}
+
+
+#info {
+  position:absolute;
+  top:20px;
+  right:20px;
+  color: #fffcf7;
+  width: 20px;
+}
