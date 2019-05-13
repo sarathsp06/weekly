@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "434873e531f1538438410eab7ef810cc8fa9e67e885cbcb523c26af2129b592b"
+            "sha256": "4c24562d7a4d4ac8ecacdff78a8a32412fe79ca68c04eda31f8d4a2323682b4f"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -86,6 +86,13 @@
                 "sha256:c70dd71abe5a8c85e55e12c19bd91ccfeec11a6e99044204511f9ed547d48451"
             ],
             "version": "==0.3"
+        },
+        "gmplot": {
+            "hashes": [
+                "sha256:2c8c14c160bf5f0ad941488a70731319da20a5d936bf4c78c7bfbc8bf2016953"
+            ],
+            "index": "pypi",
+            "version": "==1.2.0"
         },
         "idna": {
             "hashes": [
@@ -424,9 +431,9 @@
         },
         "pyrsistent": {
             "hashes": [
-                "sha256:5403d37f4d55ff4572b5b5676890589f367a9569529c6f728c11046c4ea4272b"
+                "sha256:16692ee739d42cf5e39cef8d27649a8c1fdb7aa99887098f1460057c5eb75c3a"
             ],
-            "version": "==0.15.1"
+            "version": "==0.15.2"
         },
         "python-dateutil": {
             "hashes": [
