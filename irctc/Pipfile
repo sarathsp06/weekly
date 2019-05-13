@@ -14,6 +14,7 @@ plotly = "*"
 matplotlib = "*"
 import-ipynb = "*"
 ipywidgets = "*"
+gmplot = "*"
 
 [requires]
 python_version = "3.7"
