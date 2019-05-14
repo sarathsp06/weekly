@@ -14,7 +14,8 @@ plotly = "*"
 matplotlib = "*"
 import-ipynb = "*"
 ipywidgets = "*"
-gmplot = "*"
+ipyleaflet = "*"
+geocoder = "*"
 
 [requires]
 python_version = "3.7"
