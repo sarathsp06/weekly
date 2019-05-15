@@ -3,27 +3,19 @@ html {
 }
 
 sub {
-
-
-
-
-
-      font-family: 'Nanum Gothic Coding', monospace;
-
-
+  font-family: 'Nanum Gothic Coding', monospace;
   font-variant: normal;
   color: #4c463d;
   font-size: 16px;
 }
 
-#countdown {
+body {
   height: 760px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center
 }
-
 
 #countdown .timer {
   font-size: 100px;
@@ -33,11 +25,27 @@ sub {
   margin: 20px;
 }
 
-
 #info {
-  position:absolute;
-  top:20px;
-  right:20px;
+  position: absolute;
+  top: 40px;
+  right: 40px;
   color: #fffcf7;
   width: 20px;
+   font-size: 40px;
+}
+
+
+
+input {
+  text-align: center;
+  font-family: 'Nanum Gothic Coding', monospace;
+  font-size: 100px;
+	margin:auto;
+	color:#ffff;
+	border-radius:12px;
+	border:0px;
+	min-width:80%;
+	background-color: #030204;
+	min-height:200px;
+	position:absolute:
 }

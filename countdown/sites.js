@@ -1,21 +1,23 @@
-function countdown(dateEnd) {
-  var timer, days, hours, minutes, seconds;
+var timer;
 
-  document.getElementById("countdown").style.height = window.innerHeight + ' px';
-  for (var span of document.getElementsByClassName("span")) {
-    span.addEventListener('click', function (event) {
-      alert(JSON.Stringofy(event));}
-    );
+
+function getCountDownTime() {
+  let time = localStorage.getItem('Countdown');
+  if (time == null || time == "") {
+    return null
   }
+  return chrono.parseDate(time);
+}
 
-  dateEnd = new Date(dateEnd);
-  dateEnd = dateEnd.getTime();
 
-  if (isNaN(dateEnd)) return;
-  calculate();
-  timer = setInterval(calculate, 1000);
+function saveCountDownTime(time) {
+  localStorage.setItem('Countdown', time);
+}
 
-  function calculate() {
+
+function run(dateEnd) {
+  return function() {
+    var timer, days, hours, minutes, seconds;
     var dateStart = new Date();
     var timeRemaining = parseInt((dateEnd - dateStart.getTime()) / 1000);
     if (timeRemaining < 0) {
@@ -34,12 +36,49 @@ function countdown(dateEnd) {
     document.getElementById("minutes").innerHTML = ("0" + minutes).slice(-2);
     document.getElementById("seconds").innerHTML = ("0" + seconds).slice(-2);
   }
-  function display(days, hours, minutes, seconds) {}
+}
+
+function countdown(dateEnd) {
+  if (timer != null) {
+    clearInterval(timer);
+  }
+  dateEnd = dateEnd.getTime();
+  run(dateEnd);
+  timer = setInterval(run(dateEnd), 1000);
+  return timer;
 }
 
 
-function getCountDownTime() {
-  let countdown = localStorage.getItem('Countdown');
+function config() {
+  let input = document.getElementById("dateInput")
+  let clear = document.getElementById("info")
+  input.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      saveCountDownTime(input.value);
+      load()
+    }
+  });
+
+  clear.addEventListener('click', function(event) {
+    saveCountDownTime("");
+    load();
+  });
 }
 
-countdown("2019-09-05T10:10:00.000+05:30");
+
+function load() {
+  time = getCountDownTime();
+  if (time == null) {
+    document.getElementById("countdown").style.display = "none";
+    document.getElementById("dateInput").style.display = "flex";
+  } else {
+    document.getElementById("countdown").style.display = "flex";
+    document.getElementById("dateInput").style.display = "none";
+    timer = countdown(time);
+  }
+}
+
+
+config()
+load()
