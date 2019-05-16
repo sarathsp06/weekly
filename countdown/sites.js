@@ -6,44 +6,59 @@ function getCountDownTime() {
   if (time == null || time == "") {
     return null
   }
-  return chrono.parseDate(time);
+  return parseDate(time);
 }
-
 
 function saveCountDownTime(time) {
   localStorage.setItem('Countdown', time);
 }
 
+function displayConter(days, hours, minutes, seconds,over) {
+  document.getElementById("days").textContent = Math.trunc(days);
+  document.getElementById("hours").textContent = ("0" + Math.trunc(hours)).slice(-2);
+  document.getElementById("minutes").textContent = ("0" + Math.trunc(minutes)).slice(-2);
+  document.getElementById("seconds").textContent = ("0" + Math.trunc(seconds)).slice(-2);
+  if (over === true && document.getElementById("over").style.display != "block") {
+    document.getElementById("over").style.display = "inline";
+  } else {
+    document.getElementById("over").style.display = "none";
+  }
+}
+
 
 function run(dateEnd) {
   return function() {
-    var timer, days, hours, minutes, seconds;
     var dateStart = new Date();
-    var timeRemaining = parseInt((dateEnd - dateStart.getTime()) / 1000);
+    var timeRemaining = (dateEnd - dateStart.getTime()) / 1000;
+    var over = false
     if (timeRemaining < 0) {
-      return
+      timeRemaining = 0 - timeRemaining
+      over = true;
     }
-    days = parseInt(timeRemaining / 86400);
-    timeRemaining = timeRemaining % 86400;
-    hours = parseInt(timeRemaining / 3600);
-    timeRemaining = timeRemaining % 3600;
-    minutes = parseInt(timeRemaining / 60);
-    timeRemaining = timeRemaining % 60;
-    seconds = parseInt(timeRemaining);
 
-    document.getElementById("days").innerHTML = parseInt(days, 10);
-    document.getElementById("hours").innerHTML = ("0" + hours).slice(-2);
-    document.getElementById("minutes").innerHTML = ("0" + minutes).slice(-2);
-    document.getElementById("seconds").innerHTML = ("0" + seconds).slice(-2);
+    var days, hours, minutes, seconds;
+    days = timeRemaining / 86400;
+    timeRemaining = timeRemaining % 86400;
+    hours = timeRemaining / 3600;
+    timeRemaining = timeRemaining % 3600;
+    minutes = timeRemaining / 60;
+    timeRemaining = timeRemaining % 60;
+    seconds = timeRemaining;
+    displayConter(days, hours, minutes, seconds,over);
+  }
+}
+
+function clearTimer() {
+  if (timer != null) {
+    clearInterval(timer);
+    timer = null;
   }
 }
 
 function countdown(dateEnd) {
-  if (timer != null) {
-    clearInterval(timer);
-  }
+  clearTimer();
   dateEnd = dateEnd.getTime();
-  run(dateEnd);
+  run(dateEnd)();
   timer = setInterval(run(dateEnd), 1000);
   return timer;
 }
@@ -72,6 +87,8 @@ function load() {
   if (time == null) {
     document.getElementById("countdown").style.display = "none";
     document.getElementById("dateInput").style.display = "flex";
+    window.focus();
+    document.getElementById("dateInput").focus();
   } else {
     document.getElementById("countdown").style.display = "flex";
     document.getElementById("dateInput").style.display = "none";
