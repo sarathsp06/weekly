@@ -1,13 +1,16 @@
 {
   "manifest_version": 2,
-  "name": "Override examples",
-  "version": "0.1",
+  "author": "Sarath Sadasivan Pillai",
+  "offline_enabled": true,
+  "name": "Countdown Timer",
+  "description": "Set new tab to show a count down timer to an event",
+  "version": "0.2",
   "chrome_url_overrides": {
       "newtab": "sites.html"
   },
-  "permissions": [
-      "topSites"
-  ],
+  "icons": {
+      "96": "icons/countdown-96.png"
+  },
   "applications": {
       "gecko": {
           "strict_min_version": "54.0a1"

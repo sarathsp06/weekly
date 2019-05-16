@@ -2,11 +2,10 @@ html {
   background-color: #0c120c;
 }
 
-sub {
+sub,sup {
   font-family: 'Nanum Gothic Coding', monospace;
-  font-variant: normal;
-  color: #4c463d;
-  font-size: 16px;
+  color: #aaaaaa;
+  font-size: 24px;
 }
 
 body {
@@ -35,17 +34,20 @@ body {
 }
 
 
+#info:hover {
+    cursor: pointer;
+}
 
 input {
   text-align: center;
   font-family: 'Nanum Gothic Coding', monospace;
   font-size: 100px;
 	margin:auto;
-	color:#ffff;
+	color:#fff;
 	border-radius:12px;
 	border:0px;
 	min-width:80%;
-	background-color: #030204;
+  box-shadow:inset 0 0 1px 1px #888;
+  background: #0a0a0a;
 	min-height:200px;
-	position:absolute:
 }
